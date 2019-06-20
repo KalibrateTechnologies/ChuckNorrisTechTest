@@ -2,6 +2,7 @@ import React from 'react';
 import Background from './components/background/background';
 import './App.css';
 import RandomJoke from './components/randomJoke/randomJoke';
+import SearchJokes from './components/searchJokes/searchJokes';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <header className="App-header">
         <Background />
         <RandomJoke />
+        <SearchJokes />
       </header>
     </div>
   );

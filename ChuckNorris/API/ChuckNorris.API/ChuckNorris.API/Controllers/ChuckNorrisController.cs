@@ -2,6 +2,7 @@
 using ChuckNorris.ExternalClient;
 using Microsoft.AspNetCore.Mvc;
 using ChuckNorris.ExternalClient.Models;
+using System.Collections.Generic;
 
 namespace ChuckNorris.API.Controllers
 {
@@ -20,6 +21,13 @@ namespace ChuckNorris.API.Controllers
         public async Task<ActionResult<Joke>> Get()
         {
             return Ok(await _chuckNorrisClient.GetRandomJoke());
+        }
+
+        [HttpGet]
+        [Route("{query}")]
+        public async Task<ActionResult<List<Joke>>> Search(string query)
+        {
+            return Ok(await _chuckNorrisClient.Search(query));
         }
     }
 }
