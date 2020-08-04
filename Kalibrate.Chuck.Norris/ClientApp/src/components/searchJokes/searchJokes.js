@@ -16,8 +16,10 @@ class SearchJokes extends Component {
     }
 
     searchJokes(event) {
-        // ('/api/chucknorris/search?query=' + this.state.searchTerm)
-
+        fetch(`/api/chucknorris/search?query=${this.state.searchTerm}`)
+            .then(response => response.json())
+            .then(data => this.setState({ data }))
+            .catch(error => this.setState({ error }));
         event.preventDefault();
     }
 
@@ -26,11 +28,21 @@ class SearchJokes extends Component {
     }
 
     render() {
+
         const { data, error } = this.state;
 
         return (
             <div>
-                Implement Me
+                <div>
+                    <form onSubmit={this.searchJokes}>
+                        <label>
+                            Search:
+                            <input type="text" value={this.state.searchTerm} onChange={this.handleChange} />
+                        </label>
+                        <input type="submit" className="search" value="Search" />
+                    </form>
+                    <JokeList jokes={data} error={error} />
+                </div>
             </div>
         );
     }
