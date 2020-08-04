@@ -5,19 +5,6 @@ The Chuck Norris App has two parts:
 1. A React front end that calls the back end for a Joke
 2. A C# back end API that calls https://rapidapi.com/matchilling/api/chuck-norris for a Joke
 
-# IIS Setup
-Set up an IIS website called `ChuckNorris` pointing to the UI Build Folder
-
-Update the Hosts file in `C:\Windows\System32\drivers\etc`
-
-Add an Application under the website called `ChuckNorrisApi` pointing to the API out folder
-
-# Build
-To build the API run `make build` in the API route
-To publish the API runt `make publish` in the API route (after make build)
-
-To build the UI run `npm run build`in the chuck-norris-ui folder
-
 # Challenges
 Candidates should be tested using the CandidateBranch
 
