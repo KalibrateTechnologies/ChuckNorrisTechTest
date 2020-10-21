@@ -65,6 +65,27 @@ namespace Kalibrate.Chuck.Norris.Tests.Services.ChuckNorrisServiceTests
             await Assert.ThrowsAsync<Exception>(async () => await _service.Search("test"));
         }
 
+        [Fact]
+        public async Task Given_Query_Is_Passed_Should_Pass_In_Correct_Format()
+        {
+            //Given the request returns a valid response stream
+            GivenAnHttpResponseOf(h =>
+            {
+                h.StatusCode = HttpStatusCode.OK;
+                h.Content = new StringContent(ValidJsonJokes);
+            });
+
+            //When we call the client with "test"
+            await _service.Search("test");
+
+            //Then we should call the client with the string "test" as a query param
+            _httpClientHander
+                .Protected()
+                .Verify("SendAsync", Times.Once()
+                    , ItExpr.Is<HttpRequestMessage>(hrm => hrm.RequestUri == new Uri("https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/search?query=test"))
+                    , ItExpr.IsAny<CancellationToken>());
+        }
+
         private void GivenAnHttpResponseOf(Action<HttpResponseMessage> responseModifications)
         {
             HttpResponseMessage response = new HttpResponseMessage();
