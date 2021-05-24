@@ -30,7 +30,10 @@ class SearchJokes extends Component {
 
         return (
             <div>
-                Implement Me
+                <script type="text/javascript">
+                this.searchJokes();
+        </script>
+
             </div>
         );
     }

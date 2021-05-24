@@ -7,7 +7,7 @@ namespace Kalibrate.Chuck.Norris.Services
     public interface IChuckNorrisService
     {
         Task<Joke> GetRandomJoke();
-
-        Task<IEnumerable<Joke>> Search(string query);
+        
+        Task<List<Joke>> Search(string query);
     }
 }

@@ -69,5 +69,6 @@ namespace Kalibrate.Chuck.Norris
                 }
             });
         }
+
     }
 }

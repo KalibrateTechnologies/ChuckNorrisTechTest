@@ -29,7 +29,7 @@ namespace Kalibrate.Chuck.Norris.Controllers
         [Route("search")]
         public async Task<ActionResult<List<Joke>>> Search([FromQuery] string query)
         {
-            throw new NotImplementedException();
+            return await _chuckNorrisService.Search(query);
         }
     }
 }
