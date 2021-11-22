@@ -25,7 +25,7 @@ namespace Kalibrate.Chuck.Norris.Tests.Controllers.ChuckNorrisControllerTests
         {
             // Given a valid return from the chuck norris service
             _chuckNorrisService
-                .Setup(x => x.Search(It.IsAny<string>()))
+                .Setup(x => x.Search("tst"))
                 .ReturnsAsync(new List<Joke>
                 {
                     new Joke
